@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class EmployeeEntity {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
-  private String id;
+  private Long id;
 
   private String name;
 
@@ -19,17 +19,17 @@ public class EmployeeEntity {
 
   }
 
-  public EmployeeEntity(String name, String email, String id) {
+  public EmployeeEntity(String name, String email, Long id) {
         this.name = name;
         this.email = email;
         this.id = id;
     }
 
-  public String getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

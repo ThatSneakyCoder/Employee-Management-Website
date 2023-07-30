@@ -8,8 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class OwnerEntity {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private String id;
+    private Long id;
 
     private String name;
 
@@ -20,17 +19,17 @@ public class OwnerEntity {
     public OwnerEntity() {
     }
 
-    public OwnerEntity(String name, String email, String id) {
+    public OwnerEntity(String name, String email, Long id) {
         this.name = name;
         this.email = email;
         this.id = id;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

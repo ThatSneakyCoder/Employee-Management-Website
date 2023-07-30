@@ -24,7 +24,7 @@ public class OwnerController {
         return "register";
     }
 
-@RestController
+@Controller
 @RequestMapping("/api")
 class OwnerApiController {
 
@@ -38,13 +38,13 @@ class OwnerApiController {
     }
 
     @PostMapping("/owners")
-    public String saveOwner(@RequestParam String name, @RequestParam String email, @RequestParam String id) {
+    public String saveOwner(@RequestParam String name, @RequestParam String email, @RequestParam Long id) {
         OwnerEntity owner = new OwnerEntity();
         owner.setName(name);
         owner.setId(id);
         owner.setEmail(email);
         ownerService.saveOwner(owner);
-        return "redirect:/";
+        return "index";
     }
 }
 }
