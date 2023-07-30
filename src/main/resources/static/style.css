@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background: #f3f3f3;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1em;
+}
+
+.cards {
+    display: flex; /* this will put the divs in a row */
+    justify-content: space-around; /* this will give equal space around each div */
+    padding: 20px; /* some padding for aesthetic purposes */
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly; /* This is to ensure equal spacing between the cards */
+    flex-wrap: wrap; /* This is to ensure the cards wrap to the next line if the container width is too small */
+}
+
+
+
+
+

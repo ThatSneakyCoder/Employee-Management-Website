@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:text="${message}" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome!</h1>
+  <p style="font-size:2rem;" class="lead">The perfect web app for employee management</p>
+  <hr class="my-4">
+    <div>
+        <h3>
+            At Employee Management System, we are committed to providing a comprehensive platform that streamlines the intricate processes of employee management. Our robust system is designed to facilitate seamless management of all employee-centric tasks, ranging from recruitment to retirement. With an intuitive interface and powerful features, we make employee management an effortless experience for HR professionals and team leads. Our primary focus lies in optimizing operational efficiency, fostering transparency, and cultivating a thriving work environment that propels your organization towards its strategic objectives. Founded by a team of dedicated tech enthusiasts, we believe in the power of technology to transform the traditional HR landscape. The Employee Management System is our step towards reshaping the future of work and creating a better workplace for everyone.
+        </h3>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-4">
+        <div class="card h-100" style="width: 18rem;">
+            <img src="/images/registration.jpeg" class="card-img-top" alt="registration">
+            <div class="card-body">
+                <h5 class="card-title">Registration</h5>
+                <p class="card-text">Click below to register so that you can start creating your own database.</p>
+                <button class="btn btn-primary mt-auto" onclick="window.location.href='register.html'">Register</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card h-100" style="width: 18rem;">
+            <img src="/images/database.jpg" class="card-img-top" alt="Access database">
+            <div class="card-body">
+                <h5 class="card-title">View Database</h5>
+                <p class="card-text">Click here to access your own database. You will need to verify your credentials first.</p>
+                <button class="btn btn-primary mt-auto" onclick="window.location.href='database.html'">Database</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</body>
+</html>

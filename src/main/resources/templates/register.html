@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registeration</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <form action="/api/owners" method="POST" style="padding: 20px;">
+  <div class="form-group">
+    <label for="exampleInputName">Name</label>
+    <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" name="name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputID">ID</label>
+    <input type="text" class="form-control" id="exampleInputID" name="id">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<button class="btn btn-primary" onclick="window.location.href='index.html'" style="margin-left: 20px;">Back</button>
+</body>
+</html>
