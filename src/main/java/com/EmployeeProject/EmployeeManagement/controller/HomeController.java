@@ -45,6 +45,5 @@ class EmployeeApiController {
         EmployeeEntity savedEmployee = employeeService.saveEmployee(employee);
         return ResponseEntity.ok(savedEmployee);
     }
-    
 }
 
