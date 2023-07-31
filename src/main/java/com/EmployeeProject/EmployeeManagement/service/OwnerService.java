@@ -25,5 +25,7 @@ public class OwnerService {
         return ownerRepository.save(owner);
     }
 
-    // more methods as per your requirements...
+//    public OwnerEntity findOwnerById(Long id) {
+//
+//    }
 }

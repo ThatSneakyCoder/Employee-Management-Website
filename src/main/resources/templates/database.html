@@ -10,6 +10,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+<h2>
+    Enter owner ID to access database:
+</h2>
+<form action="/api/owner-login" method="POST" style="padding: 20px;">
+  <div class="form-group">
+    <label for="exampleInputID">Owner ID</label>
+    <input type="number" class="form-control" id="exampleInputID" aria-describedby="IDHelp" name="id">
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<form action="/index.html" method="GET">
+        <button class="btn btn-primary" style="margin-left: 20px;">Back</button>
+</form>
 
 </body>
 </html>
