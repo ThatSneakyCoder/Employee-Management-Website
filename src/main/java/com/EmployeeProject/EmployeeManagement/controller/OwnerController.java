@@ -17,9 +17,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class OwnerController {
+
+    @Autowired
+    private OwnerService ownerService;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     @GetMapping("/register.html")
     public String register() {
@@ -31,12 +38,22 @@ public class OwnerController {
         return "database";
     }
 
-    @GetMapping("/employee_data")
-    public String employeeData(HttpSession session, Model model) {
-        List<EmployeeEntity> employees = (List<EmployeeEntity>) session.getAttribute("employees");
-        model.addAttribute("employees", employees);
-        return "employee_data";
+@GetMapping("/employee_data")
+public String employeeData(HttpSession session, Model model) {
+    Long ownerId = (Long) session.getAttribute("ownerId");  // retrieve ownerId from the session
+    Optional<OwnerEntity> owner = ownerService.getOwnerById(ownerId);
+    if (owner.isPresent()) {
+        model.addAttribute("ownerName", owner.get().getName());  // add owner name to the model
+        List<EmployeeEntity> employees = employeeService.getAllEmployeesByOwnerId(ownerId);  // get employees of this owner
+        model.addAttribute("employees", employees);  // add employees to the model
     }
+    model.addAttribute("ownerId", ownerId);  // add ownerId to the model
+    return "employee_data";
+}
+
+
+}
+
 
 @Controller
 @RequestMapping("/api")
@@ -64,41 +81,14 @@ class OwnerApiController {
         return "index";
     }
 
-//    @PostMapping("/owner-login")
-//    public String authenticateOwnerAndFetchEmployees(@RequestParam Long id, Model model) {
-//        OwnerEntity owner = ownerService.findOwnerById(id);
-//
-//         if (owner == null) {
-//            model.addAttribute("error", "Owner not found");
-//            return "owner-login";
-//        } else {
-//            List<EmployeeEntity> employees = employeeService.findEmployeesByOwner(owner);
-//            model.addAttribute("employees", employees);
-//            return "employees-view";
-//        }
-//    }
-
     @PostMapping("/owner-login")
     public String ownerLogin(@RequestParam Long id, HttpSession session) {
-    // Here, you can authenticate the owner by id
-    // And fetch the employee data
-    List<EmployeeEntity> employees = employeeService.getAllEmployees();
-    session.setAttribute("employees", employees);
+        session.setAttribute("ownerId", id);
+        List<EmployeeEntity> employees = employeeService.getAllEmployees();
+        session.setAttribute("employees", employees);
+        return "redirect:/employee_data";
+    }
 
-    // Redirect to the employee_data page
-    return "redirect:/employee_data";
 }
-//
-//    @GetMapping("/display-employees")
-//    public String displayAllEmployees(Model model) {
-//        // Get all employees from the database
-//        List<EmployeeEntity> employees = employeeService.getAllEmployees();
-//
-//        // Add employees to the model
-//        model.addAttribute("employees", employees);
-//
-//        // Return the name of the view to display the employees
-//        return "employees-view";
-//    }
-}
-}
+
+

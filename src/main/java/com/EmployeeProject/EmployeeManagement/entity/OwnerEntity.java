@@ -1,9 +1,15 @@
 package com.EmployeeProject.EmployeeManagement.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class OwnerEntity {
@@ -14,7 +20,8 @@ public class OwnerEntity {
 
     private String email;
 
-    // getters and setters for id, name, and email
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<EmployeeEntity> employees = new ArrayList<>();
 
     public OwnerEntity() {
     }

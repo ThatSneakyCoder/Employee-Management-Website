@@ -1,7 +1,10 @@
 package com.EmployeeProject.EmployeeManagement.controller;
 
 import com.EmployeeProject.EmployeeManagement.entity.EmployeeEntity;
+import com.EmployeeProject.EmployeeManagement.entity.OwnerEntity;
+import com.EmployeeProject.EmployeeManagement.service.OwnerService;
 import com.EmployeeProject.EmployeeManagement.service.EmployeeService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -49,6 +53,9 @@ class EmployeeApiController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private OwnerService ownerService;
+
     @GetMapping("/employees")
     public ResponseEntity<List<EmployeeEntity>> getAllEmployees() {
         List<EmployeeEntity> employees = employeeService.getAllEmployees();
@@ -62,13 +69,26 @@ class EmployeeApiController {
     }
 
     @PostMapping("/employee_data")
-    public String saveEmployeeInDb(@RequestParam Long id, @RequestParam String name, @RequestParam String email) {
+    public String saveEmployeeInDb(@RequestParam Long id,
+                                   @RequestParam String name,
+                                   @RequestParam String email,
+                                   @RequestParam Long ownerId) {
         EmployeeEntity employee = new EmployeeEntity();
         employee.setId(id);
         employee.setName(name);
         employee.setEmail(email);
-        employeeService.saveEmployee(employee);
-        return "redirect:/display-employees";
+
+        Optional<OwnerEntity> ownerOptional = ownerService.getOwnerById(ownerId);
+
+        if (ownerOptional.isPresent()) {
+            OwnerEntity owner = ownerOptional.get();
+            employee.setOwner(owner);
+            employeeService.saveEmployee(employee);
+        } else {
+            return "error_owner_not_found";
+        }
+
+        return "redirect:/employee_data";  // redirect to "/employee_data" (not "/employee_data/" + ownerId)
     }
 }
 
