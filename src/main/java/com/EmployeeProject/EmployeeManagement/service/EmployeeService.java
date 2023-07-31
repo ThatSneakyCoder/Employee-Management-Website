@@ -1,6 +1,7 @@
 package com.EmployeeProject.EmployeeManagement.service;
 
 import com.EmployeeProject.EmployeeManagement.entity.EmployeeEntity;
+import com.EmployeeProject.EmployeeManagement.entity.OwnerEntity;
 import com.EmployeeProject.EmployeeManagement.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,9 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    // more methods as per your requirements...
+//    public List<EmployeeEntity> findEmployeesByOwner(OwnerEntity owner) {
+//        List<EmployeeEntity> employeeList = new ArrayList<>();
+//
+//    }
 }
 

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Employee Data</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #3e3e3e;
+    font-size: 16px;
+}
+
+thead {
+    background-color: #494949;
+    color: #fff;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr {
+    transition: all .3s;
+}
+
+tr:hover {
+    background-color: #ddd;
+    cursor: pointer;
+    color: #fff;
+    transform: scale(1.02);
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+}
+
+tr:hover td {
+    color: #fff;
+}
+
+tr:hover {
+    -webkit-box-shadow: 0 0 10px #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Employee Data</h2>
+  <form action="/api/employee_data" method="POST" style="padding: 20px;">
+  <div class="form-group">
+    <label for="exampleInputName">Name</label>
+    <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" name="name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputID">ID</label>
+    <input type="number" class="form-control" id="exampleInputID" name="id">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<form action="/database.html" method="GET">
+        <button class="btn btn-primary" style="margin-left: 20px;">Back</button>
+</form>
+
+
+<table class="table table-striped table-hover" style="align-items: center; margin: 10px;">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <!-- Add more columns as per your requirement -->
+    </tr>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.email}"></td>
+        <!-- Add more cells as per your requirement -->
+    </tr>
+</table>
+</div>
+</body>
+</html>
