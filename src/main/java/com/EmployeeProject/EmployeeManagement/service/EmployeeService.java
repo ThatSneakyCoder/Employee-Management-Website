@@ -26,9 +26,10 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-//    public List<EmployeeEntity> findEmployeesByOwner(OwnerEntity owner) {
-//        List<EmployeeEntity> employeeList = new ArrayList<>();
-//
-//    }
+    public List<EmployeeEntity> getAllEmployeesByOwnerId(Long ownerId) {
+    // You'll have to implement this method in your EmployeeService and your EmployeeRepository
+    return employeeRepository.findAllByOwnerId(ownerId);
+}
+
 }
 

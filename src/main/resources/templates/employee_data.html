@@ -59,8 +59,10 @@ tr:hover {
 </head>
 <body>
 <div class="container">
+    <h1>Owner: <span th:text="${ownerName}"></span></h1>
 <h2>Employee Data</h2>
   <form action="/api/employee_data" method="POST" style="padding: 20px;">
+      <input type="hidden" id="ownerId" name="ownerId" th:value="${ownerId}"/>
   <div class="form-group">
     <label for="exampleInputName">Name</label>
     <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" name="name">

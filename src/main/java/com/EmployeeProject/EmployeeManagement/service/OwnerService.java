@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OwnerService {
@@ -25,7 +26,7 @@ public class OwnerService {
         return ownerRepository.save(owner);
     }
 
-//    public OwnerEntity findOwnerById(Long id) {
-//
-//    }
+    public Optional<OwnerEntity> getOwnerById(Long id) {
+        return ownerRepository.findById(id);
+    }
 }
